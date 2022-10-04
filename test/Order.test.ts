@@ -1,8 +1,8 @@
-import Coupon from "../src/Coupon";
-import { Dimension } from "../src/Dimension";
-import Item from "../src/Item";
-import Order from "../src/Order";
-import { ShippingCalculator } from "../src/ShippingCalculator";
+import Coupon from "../src/model/entity/Coupon";
+import { Dimension } from "../src/model/entity/Dimension";
+import Item from "../src/model/entity/Item";
+import Order from "../src/model/entity/Order";
+import { ShippingCalculator } from "../src/model/entity/ShippingCalculator";
 
 let itemOne: Item = new Item(1, "Guitarra", 1000, new Dimension(100, 30, 10), 3);
 let itemTwo: Item = new Item(2, "Amplificador", 5000, new Dimension(10, 20, 4), 10);
@@ -45,7 +45,7 @@ test("não deve aplicar cupom de desconto expirado", function () {
 
 test("Não deve adicionar item com quantidade negativa", function () {
 	const order = new Order("317.153.361-86");
-	expect(() => order.addItem(itemOne, -1)).toThrow(new Error('Quantidade não pode ser negativa'));
+	expect(() => order.addItem(itemOne, -1)).toThrow(new Error('Quantidade não pode ser zero ou negativa'));
 });
 
 test("Não deve adicionar itens duplicados", function () {

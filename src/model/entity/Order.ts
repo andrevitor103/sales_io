@@ -13,7 +13,11 @@ export default class Order {
 		this.orderItems = [];
 	}
 	
-	addItem (item: Item, quantity: number) {
+	public static create(cpf: string): Order {
+		return new Order(cpf);
+	}
+
+	public addItem (item: Item, quantity: number) {
 		if ( this.isDuplicated(item) ) {
 			throw new Error('Item já adicionado no pedido');
 		}
@@ -24,14 +28,14 @@ export default class Order {
 		return this.orderItems.filter((item) => item.idItem == newItem.idItem).length > 0;
 	}
 
-	addCoupon (coupon: Coupon) {
+	public addCoupon (coupon: Coupon) {
 		if (coupon.isExpired()) {
 			throw new Error('Cupom expirado');
 		}
 		this.coupon = coupon;
 	}
 
-	getTotal () {
+	public getTotal () {
 		let total = this.orderItems.reduce((total, orderItem) => {
 			total += orderItem.getTotal();
 			return total;
