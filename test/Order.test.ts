@@ -45,7 +45,7 @@ test("não deve aplicar cupom de desconto expirado", function () {
 
 test("Não deve adicionar item com quantidade negativa", function () {
 	const order = new Order("317.153.361-86");
-	expect(() => order.addItem(itemOne, -1)).toThrow(new Error('Quantidade não pode ser negativa'));
+	expect(() => order.addItem(itemOne, -1)).toThrow(new Error('Quantidade não pode ser zero ou negativa'));
 });
 
 test("Não deve adicionar itens duplicados", function () {
