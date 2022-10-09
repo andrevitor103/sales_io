@@ -102,6 +102,8 @@
   },
   "include": [
     "src",
-    "test"
+    "test",
+    "test/unit",
+    "test/integration"
   ]
 }

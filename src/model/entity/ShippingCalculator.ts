@@ -14,12 +14,8 @@ export class ShippingCalculator implements IShippingCalculator {
         //volume
         //densidade
         const volume = this.item.dimensions.getVolume();
-        const densidade = this.calculateDensity(this.item.weigth, volume);
+        const densidade = this.item.dimensions.getDensity();
         const shippingValue = ( this.distance * volume * ( densidade / 100 ));
         return shippingValue < this.MINUMUM_VALUE ? this.MINUMUM_VALUE : shippingValue;
     }
-    
-    private calculateDensity(weigth: number, volume: number): number {
-		return (weigth / volume);
-	}
 }

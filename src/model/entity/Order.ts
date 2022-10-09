@@ -1,20 +1,23 @@
 import Coupon from "./Coupon";
 import Cpf from "./Cpf";
 import Item from "./Item";
+import { OrderCode } from "./orderCode";
 import OrderItem from "./OrderItem";
 
 export default class Order {
 	cpf: Cpf;
 	orderItems: OrderItem[];
 	coupon?: Coupon;
+	orderCode: OrderCode;
 
-	constructor (cpf: string) {
+	constructor (cpf: string, date: Date, sequence: number) {
 		this.cpf = new Cpf(cpf);
+		this.orderCode = new OrderCode(date, sequence);
 		this.orderItems = [];
 	}
 	
-	public static create(cpf: string): Order {
-		return new Order(cpf);
+	public static create(cpf: string, date: Date = new Date(), sequence: number = 1): Order {
+		return new Order(cpf, date, sequence);
 	}
 
 	public addItem (item: Item, quantity: number) {
@@ -35,7 +38,7 @@ export default class Order {
 		this.coupon = coupon;
 	}
 
-	public getTotal () {
+	public getTotal (): number {
 		let total = this.orderItems.reduce((total, orderItem) => {
 			total += orderItem.getTotal();
 			return total;
@@ -44,5 +47,9 @@ export default class Order {
 			total -= this.coupon.calculateDiscount(total);
 		}
 		return total;
+	}
+
+	public getCode(): string {
+		return this.orderCode.getOrderCode();
 	}
 }

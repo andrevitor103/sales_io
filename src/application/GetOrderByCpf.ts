@@ -9,12 +9,13 @@ export default class GetOrderByCpf {
 		const output = [];
 		const orders = await this.orderRepository.getByCpf(cpf);
 		for (const order of orders) {
-			output.push({ total: order.getTotal() });
+			output.push({ code: order.getCode(), total: order.getTotal() });
 		}
 		return output;
 	}
 }
 
 type Output = {
-	total: number
+	total: number,
+	code: string
 }

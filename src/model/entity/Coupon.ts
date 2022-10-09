@@ -3,8 +3,8 @@ export default class Coupon {
 	constructor (readonly code: string, readonly percentage: number, readonly expirationDate?: Date) {
 	}
 	
-	isExpired(): boolean {
-		return this.expirationDate ? this.expirationDate.getTime() < new Date().getTime() : false;
+	isExpired(now: Date = new Date()): boolean {
+		return this.expirationDate ?   now.getTime() > this.expirationDate.getTime() : false;
 	}
 
 	calculateDiscount (total: number) {
