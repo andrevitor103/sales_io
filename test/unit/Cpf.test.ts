@@ -15,6 +15,10 @@ test("Deve tentar validar o cpf com mais de 14 caracteres", function () {
 	expect(() => new Cpf("147.085.437-600")).toThrow(new Error("Cpf inválido"));
 });
 
+test("Deve tentar validar um cpf vazio", function () {
+	expect(() => new Cpf("")).toThrow(new Error("Cpf inválido"));
+});
+
 const cpfsWithSameDigit = [
 	"111.111.111-11",
 	"222.222.222-22",

@@ -2,7 +2,6 @@ import Coupon from "../../src/model/entity/Coupon";
 import { Dimension } from "../../src/model/entity/Dimension";
 import Item from "../../src/model/entity/Item";
 import Order from "../../src/model/entity/Order";
-import { ShippingCalculator } from "../../src/model/entity/ShippingCalculator";
 
 let itemOne: Item = new Item(1, "Guitarra", 1000, new Dimension(100, 30, 10,  3));
 let itemTwo: Item = new Item(2, "Amplificador", 5000, new Dimension(10, 20, 4, 10));
@@ -53,18 +52,6 @@ test("Não deve adicionar itens duplicados", function () {
 	order.addItem(itemOne, 1);
 	order.addItem(itemTwo, 1);
 	expect(() => order.addItem(itemOne, 1)).toThrow(new Error('Item já adicionado no pedido'));
-});
-
-test("Deve calcular o valor do frete", function () {
-	const expectedValue = 30;
-	const shippingValue = new ShippingCalculator(1000, itemOne).calculate();
-	expect(shippingValue).toBe(expectedValue);	
-});
-
-test("Deve calcular devolver o valor do frete minimo", function () {
-	const minimum_value = 10;
-	const shippingValue = new ShippingCalculator(1000, itemThree).calculate();
-	expect(shippingValue).toBe(minimum_value);	
 });
 
 test("Deve criar um pedido com codigo", function () {

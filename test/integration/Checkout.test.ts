@@ -1,4 +1,5 @@
 import { Checkout } from "../../src/application/Checkout";
+import { CheckoutDTO } from "../../src/application/Dtos/CheckoutDTO";
 import GetOrderByCpf from "../../src/application/GetOrderByCpf";
 import ItemRepositoryInMemory from "../../src/infra/repository/memory/ItemRepositoryInMemory"
 import OrderRepositoryInMemory from "../../src/infra/repository/memory/OrderRepositoryInMemory";
@@ -24,6 +25,7 @@ test('Deve realizar um pedido', async () => {
             {idItem: 3, quantity: 2}
         ]
     }
+    const checkoutDto = new CheckoutDTO(input);
     const itemRepository = new ItemRepositoryInMemory();
     const orderRepository = new OrderRepositoryInMemory();
     itemRepository.save(itemOne);
@@ -31,7 +33,7 @@ test('Deve realizar um pedido', async () => {
     itemRepository.save(itemThree);
     const checkout = new Checkout(orderRepository, itemRepository);
     //quando
-    await checkout.execute(input);
+    await checkout.execute(checkoutDto);
     const getOrdersByCpf = new GetOrderByCpf(orderRepository);
     const orders = await getOrdersByCpf.execute('198.454.187-08');
     //então
@@ -52,13 +54,14 @@ test('Deve realizar um pedido com código', async () => {
             {idItem: 1, quantity: 1},
         ]
     }
+    const checkoutDto = new CheckoutDTO(input);
     const itemRepository = new ItemRepositoryInMemory();
     const orderRepository = new OrderRepositoryInMemory();
     itemRepository.save(itemOne);
     const checkout = new Checkout(orderRepository, itemRepository);
     //quando
-    await checkout.execute(input);
-    await checkout.execute(input);
+    await checkout.execute(checkoutDto);
+    await checkout.execute(checkoutDto);
     const getOrdersByCpf = new GetOrderByCpf(orderRepository);
     const orders = await getOrdersByCpf.execute('198.454.187-08');
     //então

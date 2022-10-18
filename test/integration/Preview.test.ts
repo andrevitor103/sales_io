@@ -1,3 +1,4 @@
+import { PreviewDTO } from "../../src/application/Dtos/PreviewDTO";
 import { Preview } from "../../src/application/Preview";
 import ItemRepositoryInMemory from "../../src/infra/repository/memory/ItemRepositoryInMemory"
 import { Dimension } from "../../src/model/entity/Dimension";
@@ -17,7 +18,8 @@ test('Deve simular um pedido', async () => {
             {idItem: 2, quantity: 1},
             {idItem: 3, quantity: 2}
         ]
-    }    
+    }
+    const previewDto = new PreviewDTO(input);
     const itemRepository = new ItemRepositoryInMemory();
     itemRepository.save(itemOne);
     itemRepository.save(itemTwo);
@@ -27,7 +29,7 @@ test('Deve simular um pedido', async () => {
 
     //quando
 
-    const total = await preview.execute(input);
+    const total = await preview.execute(previewDto);
 
     //então
 
