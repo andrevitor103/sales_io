@@ -1,5 +1,7 @@
 import { CalculateShipping } from "../../src/application/CalculateShipping";
 import { CalculateShippingDTO } from "../../src/application/Dtos/CalculateShippingDTO";
+import KnexConnection from "../../src/infra/database/KnexConnection";
+import ItemRepositoryDatabase from "../../src/infra/repository/database/ItemRepositoryDatabase";
 import ItemRepositoryInMemory from "../../src/infra/repository/memory/ItemRepositoryInMemory";
 import ZipcodeRepositoryInMemory from "../../src/infra/repository/memory/ZipcodeRepositoryInMemory";
 import { Coordinate } from "../../src/model/entity/Coordinate";
@@ -32,7 +34,10 @@ test("Deve simular o valor do frete", async () => {
 
     const calculateShippingDto = new CalculateShippingDTO(input);
     
-    const itemRepository = new ItemRepositoryInMemory();
+    //const itemRepository = new ItemRepositoryInMemory();
+    
+    const connection = new KnexConnection();
+    const itemRepository = new ItemRepositoryDatabase(connection);
     itemRepository.save(itemOne);
 
     const zipcodeRepository = new ZipcodeRepositoryInMemory();
@@ -55,7 +60,7 @@ test("O valor do frete deve ser zero, quando ceps iguais", async () => {
 
     const input = {
         OrderItems: [{
-         idItem: 1, 
+         idItem: 2, 
          quantity: 2
         }],
         from: "88015600", 
@@ -65,8 +70,10 @@ test("O valor do frete deve ser zero, quando ceps iguais", async () => {
 
     const calculateShippingDto = new CalculateShippingDTO(input);
     
-    const itemRepository = new ItemRepositoryInMemory();
-    itemRepository.save(itemOne);
+    const connection = new KnexConnection();
+    const itemRepository = new ItemRepositoryDatabase(connection);
+
+    itemRepository.save(itemTwo);
 
     const zipcodeRepository = new ZipcodeRepositoryInMemory();
     zipcodeRepository.save(zipcodeOne);

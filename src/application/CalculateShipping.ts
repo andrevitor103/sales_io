@@ -28,7 +28,6 @@ export class CalculateShipping {
         }
         for (const orderItem of input.orderItems.OrderItems) {
             const item = await this.itemRepository.getItem(orderItem.idItem);
-
             const shipping = new ShippingCalculator(distance, item);
             shippingTotal += ( shipping.calculate() * orderItem.quantity );
         }

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for application/Checkout.ts</title>
+    <title>Code coverage report for services/DistanceCalculator.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">application</a> Checkout.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> DistanceCalculator.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>19/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -89,16 +89,47 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,42 +137,47 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Order from "../model/entity/Order";
-import ItemRepository from "../model/repository/ItemRepository";
-import OrderRepository from "../model/repository/OrderRepository";
-import { CheckoutDTO } from "./Dtos/CheckoutDTO";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Coordinate } from "../model/entity/Coordinate";
+import { Distance } from "../model/entity/Distance";
 &nbsp;
-export class Checkout {
-    /**
-     * recebe uma entrada (cpf, item, quantidade)
-     * cria um pedido
-     * adiciona cada item no pedido
-     * salva pedido
-     */
+export class DistanceCalculator {
+    
+    public static calculate(from: Coordinate, to: Coordinate): Distance {
 &nbsp;
-    constructor(readonly orderRepository: OrderRepository, readonly itemRepository: ItemRepository) {
+        if ( this.isSameCoordinates(from, to) ) return new Distance(0);
+        
+        const radlat1 = this.calculateRadius(from.latitude);
+        const radlat2 = this.calculateRadius(to.latitude);
+        const theta = from.longitude - to.longitude;
+        const radtheta = this.calculateRadius(theta);
+        
+        let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (dist &gt; 1) <span class="cstat-no" title="statement not covered" >dist = 1;</span>
+        
+        dist = Math.acos(dist);
+        dist = (dist * 180) / Math.PI;
+        dist = dist * 60 * 1.1515;
+        dist = this.convertMilesToKm(dist); //convert miles to km
+        dist =+ dist.toPrecision(4);
+        
+        return new Distance(dist);
     }
 &nbsp;
-    async execute(input: CheckoutDTO): Promise&lt;void&gt; {
-        const sequence = (await this.orderRepository.count()) + 1;
-        const order = Order.create(input.checkout.cpf, input.checkout.date, sequence);
-        for (const orderItem of input.checkout.orderItems) {
-            const item = await this.itemRepository.getItem(orderItem.idItem);
-            order.addItem(item, orderItem.quantity);
-        }
-        await this.orderRepository.save(order);
+    private static calculateRadius(value: number): number {
+        return ( ( Math.PI * value ) / 180 );
     }
-}
-&nbsp;</pre></td></tr></table></pre>
+&nbsp;
+    private static convertMilesToKm(miles: number): number {
+        return miles * 1.609344;
+    }
+&nbsp;
+    private static isSameCoordinates(from: Coordinate, to: Coordinate): boolean {
+        return  ( from.latitude == to.latitude &amp;&amp; from.longitude == to.longitude );
+    }    
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
