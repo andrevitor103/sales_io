@@ -1,3 +1,3 @@
-# shipping
+# Shipping
 
-## app para calcular valor do frete que será cobrado
+## Serviço para calcular valor do frete que será cobrado
