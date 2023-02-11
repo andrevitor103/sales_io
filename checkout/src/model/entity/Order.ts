@@ -17,13 +17,8 @@ export default class Order {
 		this.orderItems = [];
 	}
 	
-<<<<<<<< HEAD:checkout/src/model/entity/Order.ts
 	public static create(cpf: string, date: Date = new Date(), sequence: number = 1): Order {
 		return new Order(cpf, date, sequence);
-========
-	public static create(cpf: string): Order {
-		return new Order(cpf);
->>>>>>>> de2e0ed6e55129342af4d5bd0a9ea9626a6a68ee:src/model/entity/Order.ts
 	}
 
 	public addItem (item: Item, quantity: number) {
@@ -44,11 +39,7 @@ export default class Order {
 		this.coupon = coupon;
 	}
 
-<<<<<<<< HEAD:checkout/src/model/entity/Order.ts
 	public getTotal (): number {
-========
-	public getTotal () {
->>>>>>>> de2e0ed6e55129342af4d5bd0a9ea9626a6a68ee:src/model/entity/Order.ts
 		let total = this.orderItems.reduce((total, orderItem) => {
 			total += orderItem.getTotal();
 			return total;
